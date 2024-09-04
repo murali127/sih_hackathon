@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection - Context</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: auto; /* Allows scrolling if content overflows */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('images/background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+            height: auto; /* Allows body to grow based on content */
+            min-height: 100vh; /* Ensures body takes at least full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            max-width: 800px;
+            margin: 20px auto; /* Adds margin to center container and avoid sticking to edges */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #00aa6c;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            line-height: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        .next-button {
+            background-color: #00aa6c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .next-button:hover {
+            background-color: #008f58;
+        }
+
+        .image-container {
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .system-architecture {
+            text-align: left;
+            margin-top: 30px;
+            font-size: 1.1em;
+            line-height: 1.6em;
+        }
+
+        .navigation {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Deepfake Detection Process</h1>
+        </header>
+        <div class="content">
+            <p>Our deepfake detection process involves analyzing video sequences to identify fake content. By uploading a video, our system will process each frame to determine the likelihood of it being real or fake.</p>
+            <div class="image-container">
+                <img src="images/image.png" alt="Deepfake Detection Process">
+            </div>
+            <div class="system-architecture">
+                <h2>System Architecture</h2>
+                <p><strong>1. Data Input:</strong></p>
+                <p>- <strong>Dataset (Fake/Real Videos):</strong> The system starts with a dataset of videos. These videos can be either fake (deepfake) or real. The dataset is crucial as it serves as the foundation for training and testing the deepfake detection model.</p>
+                
+                <p><strong>2. Preprocessing:</strong></p>
+                <p>- <strong>Splitting Video into Frames:</strong> The first step in the preprocessing phase is to split the video into individual frames. Each frame represents a single image, which allows the system to analyze the content at a more granular level.</p>
+                
+                <p>- <strong>Face Detection:</strong> Once the video is split into frames, face detection algorithms are applied. This step identifies and locates faces within the frames, which is essential since deepfakes typically involve facial manipulations.</p>
+                
+                <p>- <strong>Face Cropping:</strong> After detecting faces, the next step is to crop these faces from the frames. This cropping isolates the facial region, removing unnecessary background details that could interfere with the analysis.</p>
+                
+                <p>- <strong>Saving the Face-Cropped Video:</strong> The cropped faces are then saved as a processed dataset. This dataset contains only the relevant facial information from the original videos, which will be used in subsequent analysis.</p>
+                
+                <p><strong>3. Data Splitting:</strong></p>
+                <p>- <strong>Data Splitting (Train/Test Split):</strong> The processed dataset is then split into two subsets: training data and testing data. The training data is used to train the model, while the testing data is used to evaluate its performance.</p>
+                
+                <p><strong>4. Model Training and Testing:</strong></p>
+                <p>- <strong>Data Loader:</strong> The data loader is responsible for loading the training and testing data into the deepfake detection model. It feeds the data to the model in a structured format, allowing the model to learn and make predictions.</p>
+                
+                <p>- <strong>Deepfake Detection Model:</strong> This model is the core of the system and is composed of the following components:</p>
+                <ul>
+                    <li><strong>LSTM Video Classification:</strong> Long Short-Term Memory (LSTM) networks are used to classify the video sequences. LSTM is a type of Recurrent Neural Network (RNN) that is well-suited for processing sequential data like video frames.</li>
+                    <li><strong>ResNext Feature Extraction:</strong> ResNext is a convolutional neural network (CNN) architecture used for feature extraction. It helps in identifying patterns and features within the frames that are indicative of deepfakes.</li>
+                </ul>
+                
+                <p><strong>5. Model Evaluation:</strong></p>
+                <p>- <strong>Confusion Matrix:</strong> After training the model, it is evaluated using a confusion matrix. This matrix helps in understanding the performance of the model by displaying the number of correct and incorrect predictions for each class (real or fake).</p>
+                
+                <p>- <strong>Export Trained Model:</strong> Once the model is trained and evaluated, it is exported. The trained model can then be used for predicting whether new videos are real or deepfake.</p>
+                
+                <p><strong>6. Prediction Flow:</strong></p>
+                <p>- <strong>Load Trained Model:</strong> When a new video is uploaded, the system loads the previously trained model to analyze it.</p>
+                
+                <p>- <strong>Real/Fake Prediction:</strong> The video is passed through the model to determine if it is real or fake. The prediction is the final output of the system, which is presented as either "REAL" or "FAKE."</p>
+                
+                <p><strong>7. System Flow Types:</strong></p>
+                <p>- <strong>Training Flow:</strong> This refers to the flow used when training the model with the dataset. It includes the steps from data preprocessing to model evaluation.</p>
+                
+                <p>- <strong>Prediction Flow:</strong> This is the flow used for predicting the authenticity of new videos using the trained model.</p>
+                
+                <p>Overall, this system architecture provides a comprehensive approach to detecting deepfake videos by leveraging advanced AI/ML techniques, ensuring both accuracy and efficiency in identifying manipulated content.</p>
+            </div>
+        </div>
+    </div>
+    <div class="navigation">
+        <a href="detect.html" class="next-button">Go to Detection</a>
+    </div>
+</body>
+</html>
